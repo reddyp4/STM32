@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := CubeIDE_Project
+BUILD_ARTIFACT_NAME := HAL_Project
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-CubeIDE_Project.elf \
+HAL_Project.elf \
 
 MAP_FILES += \
-CubeIDE_Project.map \
+HAL_Project.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-CubeIDE_Project.list \
+HAL_Project.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: CubeIDE_Project.elf secondary-outputs
+main-build: HAL_Project.elf secondary-outputs
 
 # Tool invocations
-CubeIDE_Project.elf CubeIDE_Project.map: $(OBJS) $(USER_OBJS) /Users/bhageerath/Documents/Firmware/reddyp4/Embedded/STM32G070/CubeIDE_Project/STM32G070RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "CubeIDE_Project.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"/Users/bhageerath/Documents/Firmware/reddyp4/Embedded/STM32G070/CubeIDE_Project/STM32G070RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CubeIDE_Project.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+HAL_Project.elf HAL_Project.map: $(OBJS) $(USER_OBJS) /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/STM32G070RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "HAL_Project.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"/Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/STM32G070RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="HAL_Project.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-CubeIDE_Project.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "CubeIDE_Project.list"
+HAL_Project.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "HAL_Project.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) CubeIDE_Project.elf CubeIDE_Project.list CubeIDE_Project.map default.size.stdout
+	-$(RM) HAL_Project.elf HAL_Project.list HAL_Project.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
