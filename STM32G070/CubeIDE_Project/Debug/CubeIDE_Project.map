@@ -187,7 +187,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 ./Src/syscalls.o
  .debug_macro   0x00000000       0xce ./Src/syscalls.o
  .debug_line    0x00000000      0x846 ./Src/syscalls.o
- .debug_str     0x00000000     0x97c9 ./Src/syscalls.o
+ .debug_str     0x00000000     0x97be ./Src/syscalls.o
  .comment       0x00000000       0x44 ./Src/syscalls.o
  .debug_frame   0x00000000      0x244 ./Src/syscalls.o
  .ARM.attributes
@@ -250,7 +250,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x6a ./Src/sysmem.o
  .debug_macro   0x00000000      0x1df ./Src/sysmem.o
  .debug_line    0x00000000      0x517 ./Src/sysmem.o
- .debug_str     0x00000000     0x5fe1 ./Src/sysmem.o
+ .debug_str     0x00000000     0x5fd6 ./Src/sysmem.o
  .comment       0x00000000       0x44 ./Src/sysmem.o
  .debug_frame   0x00000000       0x30 ./Src/sysmem.o
  .ARM.attributes
@@ -752,10 +752,10 @@ LOAD /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.id
  .debug_line    0x00000000       0x44 ./Src/main.o
  .debug_line    0x00000044       0x7b ./Startup/startup_stm32g070rbtx.o
 
-.debug_str      0x00000000     0x2d6b
- .debug_str     0x00000000     0x2d2c ./Src/main.o
- .debug_str     0x00002d2c       0x3f ./Startup/startup_stm32g070rbtx.o
-                                 0x95 (size before relaxing)
+.debug_str      0x00000000     0x2d60
+ .debug_str     0x00000000     0x2d21 ./Src/main.o
+ .debug_str     0x00002d21       0x3f ./Startup/startup_stm32g070rbtx.o
+                                 0x8a (size before relaxing)
 
 .comment        0x00000000       0x43
  .comment       0x00000000       0x43 ./Src/main.o
@@ -766,6 +766,6 @@ LOAD /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.id
  .debug_frame   0x0000002c       0x2c /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.0.200.202406191456/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
 
 .debug_line_str
-                0x00000000       0x79
+                0x00000000       0x6e
  .debug_line_str
-                0x00000000       0x79 ./Startup/startup_stm32g070rbtx.o
+                0x00000000       0x6e ./Startup/startup_stm32g070rbtx.o
