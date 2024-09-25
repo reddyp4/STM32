@@ -643,3 +643,43 @@ java.lang.Exception: Resource '/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Src
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 18:42:59.852
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 18:42:59.854
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 18:42:59.854
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 18:42:59.856
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 22:03:52.701
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 22:03:52.703
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 22:03:52.703
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 22:03:52.705
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 22:03:55.795
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 22:03:55.796
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 22:03:55.796
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 22:03:55.797
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 22:52:48.067
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 22:52:48.069
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 22:52:48.069
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 22:52:48.072
+!MESSAGE Project is null
