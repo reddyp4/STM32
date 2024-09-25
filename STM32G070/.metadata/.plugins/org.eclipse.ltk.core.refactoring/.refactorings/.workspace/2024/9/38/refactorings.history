@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 2 resources" deleteContents="false" description="Delete 2 resources" element1="/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_usart_ex.h" element2="/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_usart.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="2" stamp="1726876344571"/>
+</session>

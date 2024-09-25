@@ -325,3 +325,321 @@ localhost:61234: Operation timed out.
 java.lang.Exception: localhost:61234: Operation timed out.
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+!SESSION 2024-09-20 16:30:36.100 -----------------------------------------------
+eclipse.buildId=Version 1.16.0
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/bhageerath/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/bhageerath/.eclipse_keyring
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-09-20 16:30:59.216
+!MESSAGE Log4j2 initialized with config file /Users/bhageerath/Documents/Firmware/STM32/STM32G070/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-09-20 16:31:10.153
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.urischeme 4 0 2024-09-20 16:31:11.510
+!MESSAGE org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 10; DOCTYPE is disallowed when the feature "http://apache.org/xml/features/disallow-doctype-decl" set to true.
+!STACK 0
+java.lang.IllegalArgumentException: org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 10; DOCTYPE is disallowed when the feature "http://apache.org/xml/features/disallow-doctype-decl" set to true.
+	at org.eclipse.urischeme.internal.registration.PlistFileWriter.getDom(PlistFileWriter.java:221)
+	at org.eclipse.urischeme.internal.registration.PlistFileWriter.<init>(PlistFileWriter.java:69)
+	at org.eclipse.urischeme.internal.registration.RegistrationMacOsX.getPlistFileWriter(RegistrationMacOsX.java:122)
+	at org.eclipse.urischeme.internal.registration.RegistrationMacOsX.changePlistFile(RegistrationMacOsX.java:139)
+	at org.eclipse.urischeme.internal.registration.RegistrationMacOsX.handleSchemes(RegistrationMacOsX.java:55)
+	at org.eclipse.urischeme.AutoRegisterSchemeHandlersJob.run(AutoRegisterSchemeHandlersJob.java:95)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 10; DOCTYPE is disallowed when the feature "http://apache.org/xml/features/disallow-doctype-decl" set to true.
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:262)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:342)
+	at org.eclipse.core.internal.runtime.XmlProcessorFactory.parseWithErrorOnDOCTYPE(XmlProcessorFactory.java:246)
+	at org.eclipse.urischeme.internal.registration.PlistFileWriter.getDom(PlistFileWriter.java:219)
+	... 6 more
+
+!ENTRY org.eclipse.ui.workbench 4 2 2024-09-20 16:31:16.428
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo.getDefaultConfiguration()" because "buildInfo" is null
+	at com.st.stm32cube.ide.mcu.build.ui.decorator.BoldDecorator.decorate(BoldDecorator.java:79)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:253)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:105)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:360)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:346)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.queue(DecorationScheduler.java:419)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:397)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.ui 4 4 2024-09-20 16:31:16.439
+!MESSAGE Exception in Decorator. The 'linkerDecorator' decorator will be disabled.
+!SUBENTRY 1 org.eclipse.ui 4 4 2024-09-20 16:31:16.439
+!MESSAGE Cannot invoke "org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo.getDefaultConfiguration()" because "buildInfo" is null
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo.getDefaultConfiguration()" because "buildInfo" is null
+	at com.st.stm32cube.ide.mcu.build.ui.decorator.BoldDecorator.decorate(BoldDecorator.java:79)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:253)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:105)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:360)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:346)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.queue(DecorationScheduler.java:419)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:397)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-20 16:32:08.374
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-20 16:32:08.375
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-20 16:32:08.375
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-20 16:32:08.377
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-20 16:33:56.764
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-20 16:33:56.765
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-20 16:33:56.765
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-20 16:33:56.767
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-20 16:40:19.712
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-20 16:40:19.714
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-20 16:40:19.714
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-20 16:40:19.717
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-20 16:43:05.449
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-20 16:43:05.450
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-20 16:43:05.450
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-20 16:43:05.451
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-20 16:53:42.159
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-20 16:53:42.159
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-20 16:53:42.159
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-20 16:53:42.160
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-23 11:25:50.904
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-23 11:25:50.906
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-23 11:25:50.906
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-23 11:25:50.909
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-23 11:40:02.338
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-23 11:40:02.340
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-23 11:40:02.340
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-23 11:40:02.341
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-23 11:41:03.448
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-23 11:41:03.450
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-23 11:41:03.450
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-23 11:41:03.451
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 10:27:34.123
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 10:27:34.124
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 10:27:34.124
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 10:27:34.126
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 16:24:13.313
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 16:24:13.315
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 16:24:13.315
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 16:24:13.318
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 18:09:43.383
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 18:09:43.383
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 18:09:43.383
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 18:09:43.384
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 18:09:49.724
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 18:09:49.724
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 18:09:49.724
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 18:09:49.725
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 18:13:46.176
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 18:13:46.178
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 18:13:46.178
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 18:13:46.179
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 18:13:51.421
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 18:13:51.423
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 18:13:51.423
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 18:13:51.425
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 18:15:11.250
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 18:15:11.251
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 18:15:11.251
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 18:15:11.252
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 18:20:01.231
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 18:20:01.233
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 18:20:01.233
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 18:20:01.235
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 18:33:34.695
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 18:33:34.697
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 18:33:34.697
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 18:33:34.700
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-09-24 18:34:44.707
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-09-24 18:34:44.709
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-09-24 18:34:44.709
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-09-24 18:34:44.711
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.cdt.ui 4 4 2024-09-24 18:34:47.038
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException(/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_ll_utils.c)[368]: java.lang.Exception: Resource '/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_ll_utils.c' does not exist.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:367)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:241)
+	at org.eclipse.core.internal.resources.Resource.findMarkers(Resource.java:1031)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.openErrorInEditor(BuildConsolePage.java:620)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.showError(BuildConsolePage.java:591)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.setDocument(BuildConsolePage.java:166)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.lambda$1(BuildConsolePage.java:186)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4367)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3990)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2024-09-24 18:34:47.066
+!MESSAGE Resource '/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_ll_utils.c' does not exist.
+!STACK 0
+java.lang.Exception: Resource '/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_ll_utils.c' does not exist.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:367)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:241)
+	at org.eclipse.core.internal.resources.Resource.findMarkers(Resource.java:1031)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.openErrorInEditor(BuildConsolePage.java:620)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.showError(BuildConsolePage.java:591)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.setDocument(BuildConsolePage.java:166)
+	at org.eclipse.cdt.internal.ui.buildconsole.BuildConsolePage.lambda$1(BuildConsolePage.java:186)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4367)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3990)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
