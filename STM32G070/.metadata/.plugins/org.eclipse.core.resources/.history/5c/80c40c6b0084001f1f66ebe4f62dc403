@@ -6,7 +6,7 @@
 #include "stm32g0xx_hal_gpio.h"
 #include "stm32g0xx_hal_gpio_ex.h"
 
-//#define STM32G070xx   //Not needed, since defined already
+#define STM32G070xx
 
 #define LED_PORT    GPIOA
 #define LED_PIN     GPIO_PIN_5
@@ -83,5 +83,5 @@ void usart_init()
     GPIO_InitTypeDef UART={0};
     UART.Pin = GPIO_PIN_2 | GPIO_PIN_3;
     UART.Mode = GPIO_MODE_AF_PP;
-    UART.Alternate = GPIO_AF7_USART2;
+    UART.Alternate = GPIO_AF0_USART2;
 }

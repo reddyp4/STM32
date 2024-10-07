@@ -26,7 +26,8 @@ Src/main.o: ../Src/main.c \
  /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_flash.h \
  /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_flash_ex.h \
  /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr.h \
- /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr_ex.h
+ /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr_ex.h \
+ /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_gpio_ex.h
 /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/CMSIS/Device/ST/STM32G0xx/Include/stm32g070xx.h:
 /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/CMSIS/Include/core_cm0plus.h:
 /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/CMSIS/Include/cmsis_version.h:
@@ -55,3 +56,4 @@ Src/main.o: ../Src/main.c \
 /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_flash_ex.h:
 /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr.h:
 /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr_ex.h:
+/Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_gpio_ex.h:
