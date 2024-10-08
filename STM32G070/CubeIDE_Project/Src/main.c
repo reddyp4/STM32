@@ -5,19 +5,25 @@
 #include "stm32g0xx_hal.h"
 #include "stm32g0xx_hal_gpio.h"
 #include "stm32g0xx_hal_gpio_ex.h"
+#include "stm32g0xx_hal_uart.h"
+#include "stm32g0xx_hal_uart_ex.h"
 
 //#define STM32G070xx   //Not needed, since defined already
+#define HAL_UART_MODULE_ENABLED //To enable UART transmit
 
 #define LED_PORT    GPIOA
 #define LED_PIN     GPIO_PIN_5
 #define BTN_PORT    GPIOC
 #define BTN_PIN     GPIO_PIN_13
 
-void pc13_btn_init();
-void pa5_led_init();
+void pc13_btn_init(void);
+void pa5_led_init(void);
+void usart_init(void);
 
 int counter;
 uint8_t buttonStatus;
+UART_HandleTypeDef huart2;
+char message[20] = "Hello from STM32\n";
 
 int main()
 {
@@ -30,6 +36,10 @@ int main()
         //Read button state and 
         buttonStatus = HAL_GPIO_ReadPin(BTN_PORT,BTN_PIN);
         HAL_GPIO_WritePin(LED_PORT,LED_PIN,buttonStatus);
+
+        /* UART transmit */
+        HAL_UART_Transmit(&huart2, (uint8_t *) message, 20, 100);
+        HAL_Delay(20);
 
         /* UART MODULE*/
         counter++;
@@ -72,6 +82,7 @@ void SysTick_Handler(void)
 
 void usart_init()
 {
+    USART_TypeDef UART2;
     //alternate function AF00 for PA14 and PA15
     //Enable clock for GPIOA
     __HAL_RCC_GPIOA_CLK_ENABLE();
@@ -80,8 +91,22 @@ void usart_init()
     __HAL_RCC_USART2_CLK_ENABLE();
 
     //Configure pins to alternate functions-UART
-    GPIO_InitTypeDef UART={0};
-    UART.Pin = GPIO_PIN_2 | GPIO_PIN_3;
-    UART.Mode = GPIO_MODE_AF_PP;
-    UART.Alternate = GPIO_AF1_USART2;
+    GPIO_InitTypeDef GPIO_UART={0};
+    GPIO_UART.Pin = GPIO_PIN_2 | GPIO_PIN_3;
+    GPIO_UART.Mode = GPIO_MODE_AF_PP;
+    GPIO_UART.Alternate = GPIO_AF1_USART2;   //As per manual
+    GPIO_UART.Pull = GPIO_NOPULL;
+    GPIO_UART.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+
+    HAL_GPIO_Init(GPIOA, &GPIO_UART);
+
+    //Configure UART, as per HAL UART driver registers
+    huart2.Instance = &UART2;
+    huart2.Init.BaudRate = 115200;                          /* Baud rate*/
+    huart2.Init.Mode = UART_MODE_TX;                        /* TX only to PC */
+    huart2.Init.StopBits = UART_STOPBITS_1;                 /* Single stop bit */
+    huart2.Init.WordLength = UART_WORDLENGTH_8B;            /* 8-bit word */
+    huart2.Init.Parity = UART_PARITY_NONE;                  /* No Parity */
+    huart2.Init.OverSampling = UART_OVERSAMPLING_16;        /* 16-bit oversampling*/
+    HAL_UART_Init(&huart2);
 }
