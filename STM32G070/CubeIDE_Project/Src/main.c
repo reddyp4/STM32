@@ -83,5 +83,5 @@ void usart_init()
     GPIO_InitTypeDef UART={0};
     UART.Pin = GPIO_PIN_2 | GPIO_PIN_3;
     UART.Mode = GPIO_MODE_AF_PP;
-    UART.Alternate = GPIO_AF7_USART2;
+    UART.Alternate = GPIO_AF1_USART2;
 }
