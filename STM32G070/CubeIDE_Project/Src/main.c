@@ -1,28 +1,22 @@
 // In M0, IOPORT, while in F4 it is clock access
 // BTN=PC13, Bus=AHB1, RCC_IOPENR, bit 3
 // LED=PA5, Bus=AHB1, RCC_IOPENR, bit 0
-#include "stm32g070xx.h"
+//#include "stm32g070xx.h"
 #include "stm32g0xx_hal.h"
-#include "stm32g0xx_hal_gpio.h"
-#include "stm32g0xx_hal_gpio_ex.h"
-#include "stm32g0xx_hal_uart.h"
-#include "stm32g0xx_hal_uart_ex.h"
-
-//#define STM32G070xx   //Not needed, since defined already
-#define HAL_UART_MODULE_ENABLED //To enable UART transmit
 
 #define LED_PORT    GPIOA
 #define LED_PIN     GPIO_PIN_5
 #define BTN_PORT    GPIOC
 #define BTN_PIN     GPIO_PIN_13
 
+UART_HandleTypeDef huart2;
+
 void pc13_btn_init(void);
 void pa5_led_init(void);
-void usart_init(void);
+void uart_init(void);
 
 int counter;
 uint8_t buttonStatus;
-UART_HandleTypeDef huart2;
 char message[20] = "Hello from STM32\n";
 
 int main()
@@ -30,6 +24,7 @@ int main()
     HAL_Init(); //Initialize all HAL
     pa5_led_init(); //Initialize LED
     pc13_btn_init();    //Initialize Button
+    uart_init();       //USART initialization
     while(1)
     {
         /* GPIO MODULE */
@@ -38,7 +33,7 @@ int main()
         HAL_GPIO_WritePin(LED_PORT,LED_PIN,buttonStatus);
 
         /* UART transmit */
-        HAL_UART_Transmit(&huart2, (uint8_t *) message, 20, 100);
+        //HAL_UART_Transmit(&huart2, (uint8_t *) message, 20, 100);
         HAL_Delay(20);
 
         /* UART MODULE*/
@@ -80,9 +75,8 @@ void SysTick_Handler(void)
     HAL_IncTick();  //Update tick based on clock
 }
 
-void usart_init()
+void uart_init()
 {
-    USART_TypeDef UART2;
     //alternate function AF00 for PA14 and PA15
     //Enable clock for GPIOA
     __HAL_RCC_GPIOA_CLK_ENABLE();
@@ -101,12 +95,13 @@ void usart_init()
     HAL_GPIO_Init(GPIOA, &GPIO_UART);
 
     //Configure UART, as per HAL UART driver registers
-    huart2.Instance = &UART2;
+    huart2.Instance = USART2;
     huart2.Init.BaudRate = 115200;                          /* Baud rate*/
-    huart2.Init.Mode = UART_MODE_TX;                        /* TX only to PC */
-    huart2.Init.StopBits = UART_STOPBITS_1;                 /* Single stop bit */
     huart2.Init.WordLength = UART_WORDLENGTH_8B;            /* 8-bit word */
+    huart2.Init.StopBits = UART_STOPBITS_1;                 /* Single stop bit */
     huart2.Init.Parity = UART_PARITY_NONE;                  /* No Parity */
+    huart2.Init.Mode = UART_MODE_TX;                        /* TX only to PC */
+    huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;			/* No flow control */
     huart2.Init.OverSampling = UART_OVERSAMPLING_16;        /* 16-bit oversampling*/
-    HAL_UART_Init(&huart2);
+    //HAL_UART_Init(&huart2);
 }

@@ -26,7 +26,11 @@ Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_rcc_ex.o: \
  /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_flash.h \
  /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_flash_ex.h \
  /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr.h \
- /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr_ex.h
+ /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr_ex.h \
+ /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_uart.h \
+ /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_uart_ex.h \
+ /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_usart.h \
+ /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_usart_ex.h
 /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal.h:
 ../Inc/stm32g0xx_hal_conf.h:
 /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_rcc.h:
@@ -54,3 +58,7 @@ Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_rcc_ex.o: \
 /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_flash_ex.h:
 /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr.h:
 /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr_ex.h:
+/Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_uart.h:
+/Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_uart_ex.h:
+/Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_usart.h:
+/Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project/Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_usart_ex.h:
