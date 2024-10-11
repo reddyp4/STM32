@@ -33,7 +33,7 @@ int main()
         HAL_GPIO_WritePin(LED_PORT,LED_PIN,buttonStatus);
 
         /* UART transmit */
-        //HAL_UART_Transmit(&huart2, (uint8_t *) message, 20, 100);
+        HAL_UART_Transmit(&huart2, (uint8_t *) message, 20, 100);
         HAL_Delay(20);
 
         /* UART MODULE*/
@@ -103,5 +103,5 @@ void uart_init()
     huart2.Init.Mode = UART_MODE_TX;                        /* TX only to PC */
     huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;			/* No flow control */
     huart2.Init.OverSampling = UART_OVERSAMPLING_16;        /* 16-bit oversampling*/
-    //HAL_UART_Init(&huart2);
+    HAL_UART_Init(&huart2);
 }
