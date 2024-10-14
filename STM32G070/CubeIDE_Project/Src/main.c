@@ -4,6 +4,7 @@
 //#include "stm32g070xx.h"
 #include "stm32g0xx_hal.h"
 #include "uart.h"
+#include "adc.h"
 #include <stdio.h>
 
 #define LED_PORT    GPIOA
@@ -13,12 +14,11 @@
 
 void pc13_btn_init(void);
 void pa5_led_init(void);
-void adc_init(void);
 
 int counter;
 uint8_t buttonStatus;
 char message[20] = "Hello from STM32\n";
-
+uint32_t sensor_value;
 
 int main()
 {
@@ -26,7 +26,7 @@ int main()
     pa5_led_init(); //Initialize LED
     pc13_btn_init();    //Initialize Button
     uart_init();       //USART initialization
-    adc_init();     //ADC Initialization
+    adc_init_start();     //ADC Initialization
     while(1)
     {
         /* GPIO MODULE */
@@ -41,7 +41,8 @@ int main()
         printf("Using printf\n");
         HAL_Delay(20);
 
-        /* UART MODULE*/
+        /* ADC MODULE*/
+        sensor_value = pa0_adc_read();
         counter++;
     }
 }
