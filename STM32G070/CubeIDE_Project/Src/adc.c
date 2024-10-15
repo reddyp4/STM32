@@ -29,18 +29,16 @@ void adc_continuous_conv_init()
     /* Enable clock access for ADC */
     __HAL_RCC_ADC_CLK_ENABLE();
     /* Initialize the adc structure */
-    ADC_InitTypeDef adc_init1;
     hadc1.Instance = ADC1;
-    adc_init1.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
-    adc_init1.Resolution = ADC_RESOLUTION12b;
-    adc_init1.ContinuousConvMode = ENABLE;
-    adc_init1.DiscontinuousConvMode = DISABLE;
-    adc_init1.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-    adc_init1.DataAlign = ADC_DATAALIGN_RIGHT;
-    adc_init1.NbrOfConversion = 1;
-    adc_init1.DMAContinuousRequests = DISABLE;
-    adc_init1.EOCSelection = ADC_EOC_SINGLE_CONV;
-    hadc1.Init = adc_init1;
+    hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
+    hadc1.Init.Resolution = ADC_RESOLUTION12b;
+    hadc1.Init.ContinuousConvMode = ENABLE;
+    hadc1.Init.DiscontinuousConvMode = DISABLE;
+    hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+    hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+    hadc1.Init.NbrOfConversion = 1;
+    hadc1.Init.DMAContinuousRequests = DISABLE;
+    hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
     //HAL_ADC_Init(ADC_HandleTypeDef *hadc)
     HAL_ADC_Init(&hadc1);
 

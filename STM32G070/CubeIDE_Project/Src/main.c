@@ -38,8 +38,8 @@ int main()
         /* Option1: HAL directly */
         //HAL_UART_Transmit(&huart2, (uint8_t *) message, 20, 100);
         /* Option2: use printf */
-        printf("Using printf\n");
-        HAL_Delay(20);
+        //printf("Using printf\n");
+        //HAL_Delay(20);
 
         /* ADC MODULE*/
         sensor_value = pa0_adc_read();
