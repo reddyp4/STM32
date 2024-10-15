@@ -1,6 +1,7 @@
 // In M0, IOPORT, while in F4 it is clock access
 // BTN=PC13, Bus=AHB1, RCC_IOPENR, bit 3
 // LED=PA5, Bus=AHB1, RCC_IOPENR, bit 0
+// ADC=PA0, GPIOA, Input
 //#include "stm32g070xx.h"
 #include "stm32g0xx_hal.h"
 #include "uart.h"
@@ -107,9 +108,10 @@ void gpio_pc13_interrupt_init()
     /* PC13 Button in interrupt mode */
     GPIO_InitTypeDef GPIO_InitStruct = {0};
     GPIO_InitStruct.Pin = BTN_PIN;  /* PC13 */
-    GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING; /* Mode: Interrupt */
+    GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING; /* Mode: Interrupt */
     GPIO_InitStruct.Pull = GPIO_NOPULL; /* No Pull */
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW; /* Low Speed */
+    GPIO_InitStruct.Alternate = 0;
     HAL_GPIO_Init(BTN_PORT, &GPIO_InitStruct);
 
     /* Configure LED - PA5 as output */
