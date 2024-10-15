@@ -15,6 +15,8 @@
 
 #define BUTTON_AS_INTERRUPT     1   /* 0=Manual input, 1=interrupt */
 
+extern UART_HandleTypeDef huart2;
+
 void pc13_btn_init(void);
 void pa5_led_init(void);
 void gpio_pc13_interrupt_init(void);
@@ -57,7 +59,7 @@ int main()
         /* Option1: HAL directly */
         //HAL_UART_Transmit(&huart2, (uint8_t *) message, 20, 100);
         /* Option2: use printf */
-        printf("Using printf\n");
+        //printf("Using printf\n");
         //HAL_Delay(20);
 
         /* ADC MODULE*/
@@ -122,6 +124,17 @@ void gpio_pc13_interrupt_init()
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW; /* Low Speed */
     HAL_GPIO_Init(LED_PORT,&GPIO_InitStruct);
 
+    /* Configure PA0 for ADC for multiple interrupts */
+    /*
+    GPIO_InitStruct.Pin = GPIO_PIN_0;   // PA0
+    GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING; // Output Push-pull
+    GPIO_InitStruct.Pull = GPIO_NOPULL; // No Pull
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW; // Low Speed 
+    HAL_GPIO_Init(GPIOA,&GPIO_InitStruct);
+    HAL_NVIC_SetPriority(EXTI0_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(EXTI015_IRQn);
+    */
+
     /* Set up Interrupt EXTI in NVIC */
     HAL_NVIC_SetPriority(EXTI4_15_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(EXTI4_15_IRQn);
@@ -130,8 +143,17 @@ void gpio_pc13_interrupt_init()
 /* Callback for the Interrupt, as per  HAL_GPIO_EXTI_IRQHandler */
 void HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin)
 {
-    /* Toggle the LED */
-    HAL_GPIO_TogglePin(LED_PORT, LED_PIN);
+    if(GPIO_Pin==BTN_PIN)
+    {
+        /* Toggle the LED */
+        HAL_GPIO_TogglePin(LED_PORT, LED_PIN);
+        printf("User button pressed\n");
+    }
+    else if (GPIO_Pin==GPIO_PIN_0)
+    {
+        // Toggle the LED
+        printf("PA0 button pressed\n");
+    }
 }
 
 /* ISR called by Interrupt line 15
@@ -140,4 +162,11 @@ void EXTI4_15_IRQHandler(void)
 {
     /* When rising edge detected, this IRQ is serviced */
     HAL_GPIO_EXTI_IRQHandler(BTN_PIN);
+}
+
+/* Used in muliple interrupt  */
+void EXTI0_IRQHandler(void)
+{
+    /* Second Interrupt, on PA0, same handler */
+    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
 }
