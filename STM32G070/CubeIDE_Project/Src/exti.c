@@ -1,6 +1,6 @@
-#include "stm32g0xx_hal.h"
 #include "exti.h"
 #include "led.h"
+#include "uart.h"
 
 void gpio_pc13_interrupt_init()
 {

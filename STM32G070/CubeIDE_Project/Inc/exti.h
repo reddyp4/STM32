@@ -1,6 +1,8 @@
 #ifndef EXTI_H_
 #define EXTI_H_
 
+#include "stm32g0xx_hal.h"
+
 #define BTN_PORT    GPIOC
 #define BTN_PIN     GPIO_PIN_13
 

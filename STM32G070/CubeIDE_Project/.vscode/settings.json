@@ -2,6 +2,8 @@
     "files.associations": {
         "stm32g0xx_hal_uart.h": "c",
         "stm32g0xx_hal_def.h": "c",
-        "stm32g0xx_hal.h": "c"
+        "stm32g0xx_hal.h": "c",
+        "led.h": "c",
+        "exti.h": "c"
     }
 }

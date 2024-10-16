@@ -8,6 +8,7 @@
 #include "adc.h"
 #include "exti.h"
 #include "led.h"
+#include "tim.h"
 #include <stdio.h>
 
 
@@ -16,8 +17,6 @@
 extern UART_HandleTypeDef huart2;
 
 void pc13_btn_init(void);
-void pa5_led_init(void);
-void gpio_pc13_interrupt_init(void);
 
 int counter;
 uint8_t buttonStatus;
@@ -27,6 +26,7 @@ uint32_t sensor_value;
 int main()
 {
     HAL_Init(); //Initialize all HAL
+    tim_timebase_init();
 
     /* Commented out for setting up as an interrupt driven LED */
     if(BUTTON_AS_INTERRUPT==0)
@@ -36,7 +36,7 @@ int main()
     }
     else
     {
-        gpio_pc13_interrupt_init();     /* Interrupt based LED/GPIO */
+        gpio_pc13_interrupt_init();     // Interrupt based LED/GPIO
     }
 
     uart_init();       //USART initialization
@@ -64,6 +64,13 @@ int main()
         sensor_value = pa0_adc_read();
         counter++;
     }
+}
+
+/* Callback as per HAL_TIM_IRQHandler */
+HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+    /**/
+    printf("A second elapsed! \n\r");
 }
 
 

@@ -1,5 +1,5 @@
 #include "uart.h"
-#include <stdio.h>
+//#include <stdio.h>
 
 UART_HandleTypeDef huart2;
 
