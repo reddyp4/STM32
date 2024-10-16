@@ -13,8 +13,11 @@
 
 
 #define BUTTON_AS_INTERRUPT     1   /* 0=Manual input, 1=interrupt */
+#define ADC_CONTINUOUS_CONV     0   /* 0=Single Conversion, 1=Continuous conversion*/
 
 extern UART_HandleTypeDef huart2;
+extern ADC_HandleTypeDef hadc1;
+
 
 void pc13_btn_init(void);
 
@@ -60,8 +63,20 @@ int main()
         //printf("Using printf\n");
         //HAL_Delay(20);
 
-        /* ADC MODULE*/
-        sensor_value = pa0_adc_read();
+        if(ADC_CONTINUOUS_CONV==0)
+        {
+            //Single Conversion
+            HAL_ADC_Start(&hadc1);
+            //Start adc
+            HAL_ADC_PollForConversion(&hadc1, 1);
+            //Convert
+            sensor_value = pa0_adc_read();
+        }
+        else
+        {
+            /* ADC MODULE*/
+            sensor_value = pa0_adc_read();
+        }
         counter++;
     }
 }

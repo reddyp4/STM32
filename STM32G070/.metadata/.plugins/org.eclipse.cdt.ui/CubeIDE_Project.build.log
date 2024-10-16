@@ -1,10 +1,10 @@
-11:43:51 **** Incremental Build of configuration Debug for project CubeIDE_Project ****
+12:30:28 **** Incremental Build of configuration Debug for project CubeIDE_Project ****
 make -j9 all 
 arm-none-eabi-size  CubeIDE_Project.elf 
    text	   data	    bss	    dec	    hex	filename
-  14536	    104	   2240	  16880	   41f0	CubeIDE_Project.elf
+  14888	    104	   2240	  17232	   4350	CubeIDE_Project.elf
 Finished building: default.size.stdout
  
 
-11:43:51 Build Finished. 0 errors, 0 warnings. (took 267ms)
+12:30:29 Build Finished. 0 errors, 0 warnings. (took 279ms)
 

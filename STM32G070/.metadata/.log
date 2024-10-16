@@ -2015,3 +2015,13 @@ Caused by: org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 10; DOCTY
 
 !ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-10-16 11:43:45.252
 !MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-10-16 12:30:11.543
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-10-16 12:30:11.544
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-10-16 12:30:11.544
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-10-16 12:30:11.546
+!MESSAGE Project is null
