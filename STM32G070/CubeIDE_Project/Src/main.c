@@ -13,7 +13,8 @@
 
 
 #define BUTTON_AS_INTERRUPT     1   /* 0=Manual input, 1=interrupt */
-#define ADC_CONTINUOUS_CONV     0   /* 0=Single Conversion, 1=Continuous conversion*/
+#define ADC_CONTINUOUS_CONV     2   /* 0=Single Conversion, 1=Continuous conversion
+                                       2=Interrupt Driven*/
 
 extern UART_HandleTypeDef huart2;
 extern ADC_HandleTypeDef hadc1;
@@ -24,7 +25,9 @@ void pc13_btn_init(void);
 int counter;
 uint8_t buttonStatus;
 char message[20] = "Hello from STM32\n";
-uint32_t sensor_value;
+uint32_t sensor_value_polled=0;
+uint32_t sensor_value_conv=0;
+uint32_t sensor_value_int=0;
 
 int main()
 {
@@ -43,7 +46,12 @@ int main()
     }
 
     uart_init();       //USART initialization
-    adc_init_start();     //ADC Initialization
+    if(ADC_CONTINUOUS_CONV==1)
+        adc_init_start();     //ADC Initialization
+    else if(ADC_CONTINUOUS_CONV==2)
+    {
+        adc_interrupt_init();   //ADC in interrupt mode
+    }
     
     while(1)
     {
@@ -70,12 +78,12 @@ int main()
             //Start adc
             HAL_ADC_PollForConversion(&hadc1, 1);
             //Convert
-            sensor_value = pa0_adc_read();
+            sensor_value_polled = pa0_adc_read();
         }
-        else
+        else if(ADC_CONTINUOUS_CONV==1)
         {
             /* ADC MODULE*/
-            sensor_value = pa0_adc_read();
+            sensor_value_conv = pa0_adc_read();
         }
         counter++;
     }
@@ -102,6 +110,14 @@ void pc13_btn_init()
         0,  //Alternate
         };
     HAL_GPIO_Init(BTN_PORT, &GPIO_InitStruct);
+}
+
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+    //ISR
+	sensor_value_int = pa0_adc_read();
+    HAL_ADC_Start_IT(&hadc1);
+    printf("ADC Callback!\n");
 }
 
 void SysTick_Handler(void)

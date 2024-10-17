@@ -5,6 +5,7 @@
         "stm32g0xx_hal.h": "c",
         "led.h": "c",
         "exti.h": "c",
-        "stm32g070xx.h": "c"
+        "stm32g070xx.h": "c",
+        "uart.h": "c"
     }
 }
