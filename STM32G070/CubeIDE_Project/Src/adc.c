@@ -108,7 +108,7 @@ void adc_interrupt_init()
     hadc1.Instance = ADC1;
     hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
     hadc1.Init.Resolution = ADC_RESOLUTION12b;
-    hadc1.Init.ContinuousConvMode = DISABLE;
+    hadc1.Init.ContinuousConvMode = ENABLE;
     hadc1.Init.DiscontinuousConvMode = DISABLE;
     hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
     hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
@@ -132,6 +132,7 @@ void adc_interrupt_init()
 
 void ADC_IRQHandler(void)
 {
+    printf("In the ADC IRQHandler\n");
     HAL_ADC_IRQHandler(&hadc1);
 }
 

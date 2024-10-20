@@ -84,6 +84,7 @@ int main()
         {
             /* ADC MODULE*/
             sensor_value_conv = pa0_adc_read();
+            printf("In the ADC continuos conversion\n");
         }
         counter++;
     }
@@ -117,7 +118,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
     //ISR
 	sensor_value_int = pa0_adc_read();
     HAL_ADC_Start_IT(&hadc1);
-    printf("ADC Callback!\n");
+    printf("Inside ADC Callback!\n");
 }
 
 void SysTick_Handler(void)
