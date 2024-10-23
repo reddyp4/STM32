@@ -190,7 +190,8 @@ void adc_dma_init()
     
     //ADC_HandleTypeDef has DMA Handle
     /* Link the dma handle of ADC to the DMA_Handle above */
-    __HAL_LINKDMA(&hadc1,DMA_Handle,hdma_adc1);
+    //__HAL_LINKDMA(&hadc1,DMA_Handle,hdma_adc1);
+    hadc1.DMA_Handle = &hdma_adc1;
 }
 
 void DMA1_Channel1_IRQHandler(void)
