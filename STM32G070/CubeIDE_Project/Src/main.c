@@ -13,13 +13,13 @@
 
 
 #define BUTTON_AS_INTERRUPT     1   /* 0=Manual input, 1=interrupt */
-#define ADC_CONTINUOUS_CONV     2   /* 0=Single Conversion, 1=Continuous conversion
+#define ADC_CONTINUOUS_CONV     3   /* 0=Single Conversion, 1=Continuous conversion
                                        2=Interrupt Driven
                                        3=DMA */
 
 extern UART_HandleTypeDef huart2;
 extern ADC_HandleTypeDef hadc1;
-
+extern DMA_HandleTypeDef hdma_adc1;
 
 void pc13_btn_init(void);
 
@@ -29,6 +29,7 @@ char message[20] = "Hello from STM32\n";
 uint32_t sensor_value_polled=0;
 uint32_t sensor_value_conv=0;
 uint32_t sensor_value_int=0;
+uint32_t sensor_value_dma[1];
 
 int main()
 {
@@ -52,6 +53,11 @@ int main()
     else if(ADC_CONTINUOUS_CONV==2)
     {
         adc_interrupt_init();   //ADC in interrupt mode
+    }
+    else if(ADC_CONTINUOUS_CONV==3)
+    {
+        adc_dma_init();   //ADC in dma mode
+        HAL_ADC_Start_DMA(&hadc1,(uint32_t*)sensor_value_dma,1);  //Start the dma
     }
     
     while(1)
@@ -86,6 +92,11 @@ int main()
             /* ADC MODULE*/
             sensor_value_conv = pa0_adc_read();
             printf("In the ADC continuos conversion\n");
+        }
+        else if(ADC_CONTINUOUS_CONV==3)
+        {
+            /* ADC MODULE*/
+            printf("In the ADC dma configuration\n");
         }
         counter++;
     }
@@ -128,4 +139,4 @@ void SysTick_Handler(void)
     HAL_IncTick();  //Update tick based on clock
 }
 
-20170705-J0680523
+//20170705-J0680523

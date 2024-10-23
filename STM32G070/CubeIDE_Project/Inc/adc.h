@@ -9,5 +9,6 @@ void adc_continuous_conv_init();
 void adc_init_start(void);
 void adc_single_conv_init(void);
 void adc_interrupt_init(void);
+void adc_dma_init(void);
 
 #endif  /* ADC_H_ */

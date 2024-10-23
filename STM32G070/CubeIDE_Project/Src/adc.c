@@ -3,6 +3,7 @@
 #include "stm32g0xx_hal.h"
 
 ADC_HandleTypeDef hadc1={0};
+DMA_HandleTypeDef hdma_adc1;
 
 /* Result of adc reading */
 uint32_t pa0_adc_read(void)
@@ -178,12 +179,25 @@ void adc_dma_init()
     HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
 
     /**/
-    DMA_HandleTypeDef hdma_adc1;
-    hdma_adc1.ChannelIndex = DMA1_Channel1;
+    hdma_adc1.Instance = DMA1;                      //DMA_Channel_TypeDef
+    hdma_adc1.ChannelIndex = DMA1_Channel1;         //Channel
+    hdma_adc1.Init.Direction = DMA_PERIPH_TO_MEMORY;    //Direction of dma
+    hdma_adc1.Init.PeriphInc = DMA_PINC_ENABLE;     //Enable peripheral
+    hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;   //Halfword align
+    hdma_adc1.Init.Mode = DMA_CIRCULAR;     //CIRCULAR for periph to memory
+    hdma_adc1.Init.Priority = DMA_PRIORITY_LOW;
+    HAL_DMA_Init(&hdma_adc1);   /* Initialize the dma */
+    
+    //ADC_HandleTypeDef has DMA Handle
+    /* Link the dma handle of ADC to the DMA_Handle above */
+    __HAL_LINKDMA(&hadc1,DMA_Handle,hdma_adc1);
 }
 
 void DMA1_Channel1_IRQHandler(void)
-{}
+{
+    HAL_DMA_IRQHandler(&hdma_adc1);
+    /* Do a half complete callback */
+}
 
 void ADC_IRQHandler(void)
 {
