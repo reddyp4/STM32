@@ -2185,3 +2185,103 @@ Caused by: org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 10; DOCTY
 
 !ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-10-24 06:11:25.041
 !MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-10-24 06:20:22.713
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-10-24 06:20:22.713
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-10-24 06:20:22.713
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-10-24 06:20:22.714
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-10-24 06:20:25.925
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-10-24 06:20:25.925
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-10-24 06:20:25.925
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-10-24 06:20:25.925
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-10-24 06:21:04.247
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-10-24 06:21:04.247
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-10-24 06:21:04.247
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-10-24 06:21:04.247
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-10-24 06:23:26.690
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-10-24 06:23:26.690
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-10-24 06:23:26.690
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-10-24 06:23:26.691
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-10-24 06:23:34.291
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-10-24 06:23:34.291
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-10-24 06:23:34.291
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-10-24 06:23:34.291
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-10-24 06:23:45.132
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-10-24 06:23:45.132
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-10-24 06:23:45.132
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-10-24 06:23:45.133
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-10-24 06:24:44.840
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-10-24 06:24:44.840
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-10-24 06:24:44.840
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-10-24 06:24:44.842
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-10-24 06:25:08.141
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-10-24 06:25:08.141
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-10-24 06:25:08.141
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-10-24 06:25:08.143
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-10-24 06:25:34.687
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-10-24 06:25:34.687
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-10-24 06:25:34.687
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-10-24 06:25:34.688
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-10-24 06:29:25.489
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-10-24 06:29:25.489
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-10-24 06:29:25.489
+!MESSAGE /Users/bhageerath/Documents/Firmware/STM32/STM32G070/CubeIDE_Project overlaps the location of another project: 'CubeIDE_Project'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-10-24 06:29:25.489
+!MESSAGE Project is null

@@ -13,7 +13,7 @@
 
 
 #define BUTTON_AS_INTERRUPT     1   /* 0=Manual input, 1=interrupt */
-#define ADC_CONTINUOUS_CONV     0   /* 0=Single Conversion, 1=Continuous conversion
+#define ADC_CONTINUOUS_CONV     2   /* 0=Single Conversion, 1=Continuous conversion
                                        2=Interrupt Driven
                                        3=DMA */
 
@@ -48,6 +48,11 @@ int main()
     }
 
     uart_init();       //USART initialization
+    if(ADC_CONTINUOUS_CONV==0)
+    {
+        adc_single_conv_init(); //ADC Initialization
+        HAL_ADC_Start(&hadc1);
+    }
     if(ADC_CONTINUOUS_CONV==1)
         adc_init_start();     //ADC Initialization
     else if(ADC_CONTINUOUS_CONV==2)
