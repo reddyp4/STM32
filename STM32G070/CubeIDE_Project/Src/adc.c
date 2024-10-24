@@ -182,7 +182,7 @@ void adc_dma_init()
 
     /**/
     hdma_adc1.Instance = DMA1_Channel1;                      //DMA_Channel_TypeDef
-    hdma_adc1.ChannelIndex = DMA1_Channel1;         //Channel
+    //hdma_adc1.ChannelIndex = DMA1;         //Channel, may  not be needed
     hdma_adc1.Init.Direction = DMA_PERIPH_TO_MEMORY;    //Direction of dma
     hdma_adc1.Init.PeriphInc = DMA_PINC_ENABLE;     //Enable peripheral
     hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;   //Halfword align
