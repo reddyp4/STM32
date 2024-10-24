@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "exti.h"
 #include "led.h"
 #include "uart.h"

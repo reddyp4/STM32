@@ -13,7 +13,7 @@
 
 
 #define BUTTON_AS_INTERRUPT     1   /* 0=Manual input, 1=interrupt */
-#define ADC_CONTINUOUS_CONV     3   /* 0=Single Conversion, 1=Continuous conversion
+#define ADC_CONTINUOUS_CONV     0   /* 0=Single Conversion, 1=Continuous conversion
                                        2=Interrupt Driven
                                        3=DMA */
 
@@ -103,7 +103,7 @@ int main()
 }
 
 /* Callback as per HAL_TIM_IRQHandler */
-HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     /**/
     printf("A second elapsed! \n\r");
