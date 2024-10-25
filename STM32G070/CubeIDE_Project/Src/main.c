@@ -30,6 +30,7 @@ uint32_t sensor_value_polled=0;
 uint32_t sensor_value_conv=0;
 uint32_t sensor_value_int=0;
 uint32_t sensor_value_dma[1];
+uint32_t time_Main=0;       /* Time for each main loop */
 
 int main()
 {

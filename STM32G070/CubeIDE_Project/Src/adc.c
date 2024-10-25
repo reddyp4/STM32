@@ -104,17 +104,17 @@ void adc_interrupt_init()
     //HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init);
     HAL_GPIO_Init(GPIOA, &gpio_pa0_str);
 
-    /* Type of Conversion as continuous for PA0 */
+    /* Type of Conversion as interrupt based for PA0 */
     /* Enable clock access for ADC */
     __HAL_RCC_ADC_CLK_ENABLE();
     /* Initialize the adc structure */
     hadc1.Instance = ADC1;
     hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
     hadc1.Init.Resolution = ADC_RESOLUTION12b;
-    hadc1.Init.ContinuousConvMode = ENABLE;
+    hadc1.Init.ContinuousConvMode = DISABLE;
     hadc1.Init.DiscontinuousConvMode = DISABLE;
     hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-    hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+    hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIG_T1_TRGO2;
     hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
     hadc1.Init.NbrOfConversion = 1;
     hadc1.Init.DMAContinuousRequests = DISABLE;
@@ -202,7 +202,7 @@ void DMA1_Channel1_IRQHandler(void)
     /* Do a half complete callback */
 }
 
-void ADC_IRQHandler(void)
+void ADC_COMP_IRQHandler(void)
 {
     printf("In the ADC IRQHandler\n");
     HAL_ADC_IRQHandler(&hadc1);
