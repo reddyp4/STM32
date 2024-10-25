@@ -114,7 +114,7 @@ void adc_interrupt_init()
     hadc1.Init.ContinuousConvMode = ENABLE;
     hadc1.Init.DiscontinuousConvMode = DISABLE;
     hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-    hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIG_T1_TRGO2;
+    hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
     hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
     hadc1.Init.NbrOfConversion = 1;
     hadc1.Init.DMAContinuousRequests = DISABLE;
@@ -180,12 +180,15 @@ void adc_dma_init()
     HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
 
-    /**/
+    /*Link ADC to DMA*/
     hdma_adc1.Instance = DMA1_Channel1;                      //DMA_Channel_TypeDef
-    //hdma_adc1.ChannelIndex = DMA1;         //Channel, may  not be needed
+    //hdma_adc1.ChannelIndex = DMA1;         //Channel, may  not be needed, DMA_Init takes care of this
+    hdma_adc1.Init.Request = DMA_REQUEST_ADC1;      //Request ADC
     hdma_adc1.Init.Direction = DMA_PERIPH_TO_MEMORY;    //Direction of dma
-    hdma_adc1.Init.PeriphInc = DMA_PINC_ENABLE;     //Enable peripheral
-    hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;   //Halfword align
+    hdma_adc1.Init.PeriphInc = DMA_PINC_ENABLE;     //Enable peripheral, increment address
+    hdma_adc1.Init.MemInc = DMA_MINC_ENABLE;        //Enable memory increment while copying
+    hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;   //Halfword align for peripherals
+    hdma_adc1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;      //Halfword align for memory
     hdma_adc1.Init.Mode = DMA_CIRCULAR;     //CIRCULAR for periph to memory
     hdma_adc1.Init.Priority = DMA_PRIORITY_LOW;
     HAL_DMA_Init(&hdma_adc1);   /* Initialize the dma */

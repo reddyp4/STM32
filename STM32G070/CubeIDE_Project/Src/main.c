@@ -13,7 +13,7 @@
 
 
 #define BUTTON_AS_INTERRUPT     1   /* 0=Manual input, 1=interrupt */
-#define ADC_CONTINUOUS_CONV     2   /* 0=Single Conversion, 1=Continuous conversion
+#define ADC_CONTINUOUS_CONV     3   /* 0=Single Conversion, 1=Continuous conversion
                                        2=Interrupt Driven
                                        3=DMA */
 
