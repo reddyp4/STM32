@@ -111,7 +111,7 @@ void adc_interrupt_init()
     hadc1.Instance = ADC1;
     hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
     hadc1.Init.Resolution = ADC_RESOLUTION12b;
-    hadc1.Init.ContinuousConvMode = DISABLE;
+    hadc1.Init.ContinuousConvMode = ENABLE;
     hadc1.Init.DiscontinuousConvMode = DISABLE;
     hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
     hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIG_T1_TRGO2;
