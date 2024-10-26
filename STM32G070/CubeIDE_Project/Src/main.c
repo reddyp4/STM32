@@ -10,6 +10,7 @@
 #include "led.h"
 #include "tim.h"
 #include <stdio.h>
+#include "spi.h"
 
 
 #define BUTTON_AS_INTERRUPT     1   /* 0=Manual input, 1=interrupt */
@@ -20,6 +21,7 @@
 extern UART_HandleTypeDef huart2;
 extern ADC_HandleTypeDef hadc1;
 extern DMA_HandleTypeDef hdma_adc1;
+extern SPI_HandleTypeDef hspi1;
 
 void pc13_btn_init(void);
 
