@@ -277,3 +277,16 @@ STM32G070/CubeIDE_Project/Debug/Src/system_stm32g070xx.su
 STM32G070/CubeIDE_Project/Debug/Src/uart.cyclo
 STM32G070/CubeIDE_Project/Debug/Src/uart.su
 STM32G070/CubeIDE_Project/Debug/Startup/startup_stm32g070rbtx.d
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_spi_ex.cyclo
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_spi_ex.d
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_spi_ex.o
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_spi_ex.su
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_spi.cyclo
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_spi.d
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_spi.o
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_spi.su
+STM32G070/CubeIDE_Project/Debug/Src/spi.cyclo
+STM32G070/CubeIDE_Project/Debug/Src/spi.d
+STM32G070/CubeIDE_Project/Debug/Src/spi.o
+STM32G070/CubeIDE_Project/Debug/Src/spi.su
+STM32G070/CubeIDE_Project/Inc/spi.h
