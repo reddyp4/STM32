@@ -8,5 +8,33 @@ SPI_HandleTypeDef hspi1={0};
 
 void spi_init(void)
 {
-    /* GPIO Pins: */
+    /* GPIO Pins: SPI1
+    CS:     PA4
+    CLK:    PA5
+    MOSI:   PA7
+    MISO:   PA6
+    */
+   __GPIOA_CLK_ENABLE();            //Select Pad-A
+   GPIO_InitTypeDef hgpio1={0};
+   hgpio1.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;   //Four pins
+   hgpio1.Mode = GPIO_MODE_AF_PP;
+   hgpio1.Pull = GPIO_NOPULL;
+   hgpio1.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+   hgpio1.Alternate = GPIO_AF0_SPI1;                //As per datasheet
+
+   __SPI1_CLK_ENABLE();     //Clock to SPI
+   SPI_InitTypeDef hspi1;                               //handle
+   hspi1.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;   //baud-rate prescalar
+   hspi1.CLKPhase = SPI_PHASE_1EDGE;                    //2-phases for edge
+   hspi1.CLKPolarity = SPI_POLARITY_LOW;                //polarity=high
+   hspi1.CRCCalculation = SPI_CRCCALCULATION_DISABLE;   //enable crc
+   //hspi1.CRCLength = SPI_CRC_LENGTH_8BIT;               //crc is 8-bits
+   //hspi1.CRCPolynomial = 1;                             //crc poly-coef
+   hspi1.DataSize = SPI_DATASIZE_8BIT;                  //datasize-8bit
+   hspi1.Direction = SPI_DIRECTION_2LINES;              //mosi/miso
+   hspi1.FirstBit = SPI_FIRSTBIT_MSB;                   //msb is first bit
+   hspi1.Mode = SPI_MODE_MASTER;                        //master
+   hspi1.NSS = SPI_NSS_SOFT;                            //soft nss
+   hspi1.NSSPMode = SPI_NSS_PULSE_ENABLE;               //enable nss
+   hspi1.TIMode = SPI_TIMODE_DISABLE;                   //disable TI mode
 }

@@ -33,6 +33,9 @@ uint32_t sensor_value_conv=0;
 uint32_t sensor_value_int=0;
 uint32_t sensor_value_dma[1];
 uint32_t time_Main=0;       /* Time for each main loop */
+/* SPI Buffer */
+uint8_t tx_buffer[10]={10,20,30,40,50,60,70,80,90,100};
+uint8_t rx_buffer[10];
 
 int main()
 {
@@ -67,6 +70,9 @@ int main()
         adc_dma_init();   //ADC in dma mode
         HAL_ADC_Start_DMA(&hadc1,(uint32_t*)sensor_value_dma,1);  //Start the dma
     }
+
+    /* Setup spi */
+    spi_init();
     
     while(1)
     {
@@ -107,6 +113,8 @@ int main()
             printf("In the ADC dma configuration\n");
         }
         counter++;
+
+        HAL_SPI_TransmitReceive(&hspi1,tx_buffer,rx_buffer,10,100);
     }
 }
 
