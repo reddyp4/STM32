@@ -17,6 +17,7 @@
 #define ADC_CONTINUOUS_CONV     3   /* 0=Single Conversion, 1=Continuous conversion
                                        2=Interrupt Driven
                                        3=DMA */
+#define SPI_MODE    2   /* 1-polling, 2-interrupt, 3-dma*/
 
 extern UART_HandleTypeDef huart2;
 extern ADC_HandleTypeDef hadc1;
@@ -32,6 +33,7 @@ uint32_t sensor_value_polled=0;
 uint32_t sensor_value_conv=0;
 uint32_t sensor_value_int=0;
 uint32_t sensor_value_dma[1];
+uint32_t sensor_SPI_IT=0;
 uint32_t time_Main=0;       /* Time for each main loop */
 /* SPI Buffer */
 uint8_t tx_buffer[10]={10,20,30,40,50,60,70,80,90,100};
@@ -72,7 +74,15 @@ int main()
     }
 
     /* Setup spi */
-    spi_init();
+    if(SPI_MODE==0)
+        spi_init();
+    else if (SPI_MODE==1)
+    {
+        spi_interrupt_init();
+        HAL_SPI_TransmitReceive_IT(&hspi1,tx_buffer,rx_buffer,10);
+    }
+    else if(SPI_MODE==2)
+        spi_dma_init();
     
     while(1)
     {
@@ -147,6 +157,14 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 	sensor_value_int = pa0_adc_read();
     HAL_ADC_Start_IT(&hadc1);
     printf("Inside ADC Callback!\n");
+}
+
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+    //ISR after tx/rx complete
+    //do something
+   __HAL_SPI_ENABLE_IT(&hspi1, SPI_IT_RXNE);
+   sensor_SPI_IT++;
 }
 
 void SysTick_Handler(void)

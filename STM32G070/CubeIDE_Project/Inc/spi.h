@@ -6,5 +6,7 @@
 #include "stm32g0xx_hal_spi.h"
 
 void spi_init(void);
+void spi_interrupt_init(void);
+void spi_dma_init(void);
 
 #endif  /* SPI_H_ */
