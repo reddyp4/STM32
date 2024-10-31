@@ -23,7 +23,7 @@
 extern UART_HandleTypeDef huart2;
 extern ADC_HandleTypeDef hadc1;
 extern DMA_HandleTypeDef hdma_adc1;
-extern SPI_HandleTypeDef hspi1;
+extern SPI_HandleTypeDef hspi2;
 
 void pc13_btn_init(void);
 
@@ -34,6 +34,7 @@ uint32_t sensor_value_polled=0;
 uint32_t sensor_value_conv=0;
 uint32_t sensor_value_int=0;
 uint32_t sensor_value_dma[1];
+uint32_t sensor_SPI_polling=0;
 uint32_t sensor_SPI_IT=0;
 uint32_t time_Main=0;       /* Time for each main loop */
 /* SPI Buffer */
@@ -89,21 +90,23 @@ int main()
 
     /* Setup spi */
     if(SPI_MODE==0)
+#endif
+        printf("Before   SPI: %c, %c, %c, %c, %c, %c, %c, %c, %c, %c\n",rx_buffer[0],rx_buffer[1],rx_buffer[2],rx_buffer[3],rx_buffer[4],rx_buffer[5],rx_buffer[6],rx_buffer[7],rx_buffer[8],rx_buffer[9]);
         spi_init();
+        HAL_SPI_TransmitReceive(&hspi2,tx_buffer,rx_buffer,10,1000);
+        sensor_SPI_polling++;
+        printf("Finished SPI: %c, %c, %c, %c, %c, %c, %c, %c, %c, %c\n",rx_buffer[0],rx_buffer[1],rx_buffer[2],rx_buffer[3],rx_buffer[4],rx_buffer[5],rx_buffer[6],rx_buffer[7],rx_buffer[8],rx_buffer[9]);
+#if 0
     else if (SPI_MODE==1)
     {
-#endif
         //spi_interrupt_init();
-        spi_interrupt_spi1_init2();
-        HAL_SPI_TransmitReceive_IT(&hspi1,tx_buffer,rx_buffer,1);
-#if 0
+        //spi_interrupt_spi2();
+        //HAL_SPI_TransmitReceive_IT(&hspi1,tx_buffer,rx_buffer,1);
     }
     else if(SPI_MODE==2)
         spi_dma_init();
-#endif    
     while(1)
     {
-#if 0
         /* GPIO MODULE */
         /* Read button state continuously */
         /* This is not needed when interrupt is used to commented out */
@@ -146,8 +149,8 @@ int main()
             printf("SPI in polling mode! \n\r");
             HAL_SPI_TransmitReceive(&hspi1,tx_buffer,rx_buffer,1,100);
         }
-#endif
     }
+#endif
 }
 
 /* Callback as per HAL_TIM_IRQHandler */

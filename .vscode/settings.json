@@ -6,6 +6,7 @@
         "stm32g0xx_hal_def.h": "c",
         "stm32g0xx_hal_uart.h": "c",
         "stm32g0xx_hal_uart_ex.h": "c",
-        "adc.h": "c"
+        "adc.h": "c",
+        "spi.h": "c"
     }
 }
