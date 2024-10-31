@@ -87,24 +87,30 @@ int main()
         adc_dma_init();   //ADC in dma mode
         HAL_ADC_Start_DMA(&hadc1,(uint32_t*)sensor_value_dma,1);  //Start the dma
     }
+#endif
 
     /* Setup spi */
+    printf("Before   SPI: %c, %c, %c, %c, %c, %c, %c, %c, %c, %c\n",rx_buffer[0],rx_buffer[1],rx_buffer[2],rx_buffer[3],rx_buffer[4],rx_buffer[5],rx_buffer[6],rx_buffer[7],rx_buffer[8],rx_buffer[9]);
     if(SPI_MODE==0)
-#endif
-        printf("Before   SPI: %c, %c, %c, %c, %c, %c, %c, %c, %c, %c\n",rx_buffer[0],rx_buffer[1],rx_buffer[2],rx_buffer[3],rx_buffer[4],rx_buffer[5],rx_buffer[6],rx_buffer[7],rx_buffer[8],rx_buffer[9]);
+    {
+        printf("SPI in polling mode\n");
         spi_init();
         HAL_SPI_TransmitReceive(&hspi2,tx_buffer,rx_buffer,10,1000);
         sensor_SPI_polling++;
-        printf("Finished SPI: %c, %c, %c, %c, %c, %c, %c, %c, %c, %c\n",rx_buffer[0],rx_buffer[1],rx_buffer[2],rx_buffer[3],rx_buffer[4],rx_buffer[5],rx_buffer[6],rx_buffer[7],rx_buffer[8],rx_buffer[9]);
-#if 0
+    }
     else if (SPI_MODE==1)
     {
-        //spi_interrupt_init();
-        //spi_interrupt_spi2();
-        //HAL_SPI_TransmitReceive_IT(&hspi1,tx_buffer,rx_buffer,1);
+        printf("SPI in interrupt mode\n");
+        spi_interrupt_init();
+        HAL_SPI_TransmitReceive_IT(&hspi2,tx_buffer,rx_buffer,10);
     }
     else if(SPI_MODE==2)
+    {
+        printf("SPI in dma mode\n");
         spi_dma_init();
+    }
+    printf("Finished SPI: %c, %c, %c, %c, %c, %c, %c, %c, %c, %c\n",rx_buffer[0],rx_buffer[1],rx_buffer[2],rx_buffer[3],rx_buffer[4],rx_buffer[5],rx_buffer[6],rx_buffer[7],rx_buffer[8],rx_buffer[9]);
+#if 0
     while(1)
     {
         /* GPIO MODULE */
