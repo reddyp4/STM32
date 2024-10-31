@@ -89,7 +89,7 @@ void adc_single_conv_init()
     HAL_ADC_ConfigChannel(&hadc1,&adc_ch);
 }
 
-void adc_interrupt_init()
+void adc_interrupt_init(void)
 {
     GPIO_InitTypeDef gpio_pa0_str = {0};
     ADC_ChannelConfTypeDef adc_ch = {0};
@@ -205,6 +205,7 @@ void DMA1_Channel1_IRQHandler(void)
     /* Do a half complete callback */
 }
 
+/* IRQ handler from adc irq */
 void ADC_COMP_IRQHandler(void)
 {
     printf("In the ADC IRQHandler\n");

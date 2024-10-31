@@ -13,11 +13,12 @@
 #include "spi.h"
 
 
-#define BUTTON_AS_INTERRUPT     1   /* 0=Manual input, 1=interrupt */
-#define ADC_CONTINUOUS_CONV     3   /* 0=Single Conversion, 1=Continuous conversion
+#define BUTTON_AS_INTERRUPT     2   /* 0=Manual input, 1=interrupt, 2=no LED, PA5 for SPI */
+#define ADC_CONTINUOUS_CONV     4   /* 0=Single Conversion, 1=Continuous conversion
                                        2=Interrupt Driven
-                                       3=DMA */
-#define SPI_MODE    2   /* 1-polling, 2-interrupt, 3-dma*/
+                                       3=DMA 
+                                       4=No ADC*/
+#define SPI_MODE    1   /* 0-polling, 1-interrupt, 2-dma*/
 
 extern UART_HandleTypeDef huart2;
 extern ADC_HandleTypeDef hadc1;
@@ -39,9 +40,23 @@ uint32_t time_Main=0;       /* Time for each main loop */
 uint8_t tx_buffer[10]={10,20,30,40,50,60,70,80,90,100};
 uint8_t rx_buffer[10];
 
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+    //ISR after tx/rx complete
+    //do something
+   //__HAL_SPI_ENABLE_IT(&hspi1, SPI_IT_RXNE);
+   sensor_SPI_IT++;
+   printf("Inside SPI Interrupt Callback!\n");
+}
+
 int main()
 {
     HAL_Init(); //Initialize all HAL
+
+    uart_init();       //USART initialization
+    printf("Initiated UART!\n");
+
+#if 0
     tim_timebase_init();
 
     /* Commented out for setting up as an interrupt driven LED */
@@ -50,12 +65,11 @@ int main()
         pa5_led_init(); //Initialize LED
         pc13_btn_init();    //Initialize Button*/
     }
-    else
+    else if(BUTTON_AS_INTERRUPT==1)
     {
         gpio_pc13_interrupt_init();     // Interrupt based LED/GPIO
     }
 
-    uart_init();       //USART initialization
     if(ADC_CONTINUOUS_CONV==0)
     {
         adc_single_conv_init(); //ADC Initialization
@@ -78,14 +92,18 @@ int main()
         spi_init();
     else if (SPI_MODE==1)
     {
-        spi_interrupt_init();
-        HAL_SPI_TransmitReceive_IT(&hspi1,tx_buffer,rx_buffer,10);
+#endif
+        //spi_interrupt_init();
+        spi_interrupt_spi1_init2();
+        HAL_SPI_TransmitReceive_IT(&hspi1,tx_buffer,rx_buffer,1);
+#if 0
     }
     else if(SPI_MODE==2)
         spi_dma_init();
-    
+#endif    
     while(1)
     {
+#if 0
         /* GPIO MODULE */
         /* Read button state continuously */
         /* This is not needed when interrupt is used to commented out */
@@ -123,8 +141,12 @@ int main()
             printf("In the ADC dma configuration\n");
         }
         counter++;
-
-        HAL_SPI_TransmitReceive(&hspi1,tx_buffer,rx_buffer,10,100);
+        if(SPI_MODE==0) /* polling only */
+        {
+            printf("SPI in polling mode! \n\r");
+            HAL_SPI_TransmitReceive(&hspi1,tx_buffer,rx_buffer,1,100);
+        }
+#endif
     }
 }
 
@@ -157,14 +179,6 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 	sensor_value_int = pa0_adc_read();
     HAL_ADC_Start_IT(&hadc1);
     printf("Inside ADC Callback!\n");
-}
-
-void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
-{
-    //ISR after tx/rx complete
-    //do something
-   __HAL_SPI_ENABLE_IT(&hspi1, SPI_IT_RXNE);
-   sensor_SPI_IT++;
 }
 
 void SysTick_Handler(void)
