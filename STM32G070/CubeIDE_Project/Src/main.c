@@ -18,7 +18,7 @@
                                        2=Interrupt Driven
                                        3=DMA 
                                        4=No ADC*/
-#define SPI_MODE    1   /* 0-polling, 1-interrupt, 2-dma*/
+#define SPI_MODE    2   /* 0-polling, 1-interrupt, 2-dma*/
 
 extern UART_HandleTypeDef huart2;
 extern ADC_HandleTypeDef hadc1;
@@ -36,6 +36,7 @@ uint32_t sensor_value_int=0;
 uint32_t sensor_value_dma[1];
 uint32_t sensor_SPI_polling=0;
 uint32_t sensor_SPI_IT=0;
+uint32_t sensor_SPI_dma=0;
 uint32_t time_Main=0;       /* Time for each main loop */
 /* SPI Buffer */
 uint8_t tx_buffer[10]={10,20,30,40,50,60,70,80,90,100};
@@ -106,8 +107,10 @@ int main()
     }
     else if(SPI_MODE==2)
     {
+        sensor_SPI_dma++;
         printf("SPI in dma mode\n");
         spi_dma_init();
+        HAL_SPI_TransmitReceive_DMA(&hspi2,tx_buffer,rx_buffer,10);
     }
     printf("Finished SPI: %c, %c, %c, %c, %c, %c, %c, %c, %c, %c\n",rx_buffer[0],rx_buffer[1],rx_buffer[2],rx_buffer[3],rx_buffer[4],rx_buffer[5],rx_buffer[6],rx_buffer[7],rx_buffer[8],rx_buffer[9]);
 #if 0
