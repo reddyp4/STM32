@@ -11,7 +11,7 @@
 #include "tim.h"
 #include <stdio.h>
 #include "spi.h"
-
+#include "i2c.h"
 
 #define BUTTON_AS_INTERRUPT     2   /* 0=Manual input, 1=interrupt, 2=no LED, PA5 for SPI */
 #define ADC_CONTINUOUS_CONV     4   /* 0=Single Conversion, 1=Continuous conversion
@@ -19,11 +19,13 @@
                                        3=DMA 
                                        4=No ADC*/
 #define SPI_MODE    2   /* 0-polling, 1-interrupt, 2-dma*/
+#define I2C_PRESENT 1   /* if i2c device is present */
 
 extern UART_HandleTypeDef huart2;
 extern ADC_HandleTypeDef hadc1;
 extern DMA_HandleTypeDef hdma_adc1;
 extern SPI_HandleTypeDef hspi2;
+extern I2C_HandleTypeDef hi2c1;
 
 void pc13_btn_init(void);
 
@@ -41,6 +43,12 @@ uint32_t time_Main=0;       /* Time for each main loop */
 /* SPI Buffer */
 uint8_t tx_buffer[10]={10,20,30,40,50,60,70,80,90,100};
 uint8_t rx_buffer[10];
+/* I2C data */
+extern uint8_t DATA_RECORD[6];
+extern uint8_t device_id;
+extern int16_t x,y,z;
+extern float xg, yg, zg;
+
 
 void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
 {
@@ -113,9 +121,15 @@ int main()
         HAL_SPI_TransmitReceive_DMA(&hspi2,tx_buffer,rx_buffer,10);
     }
     printf("Finished SPI: %c, %c, %c, %c, %c, %c, %c, %c, %c, %c\n",rx_buffer[0],rx_buffer[1],rx_buffer[2],rx_buffer[3],rx_buffer[4],rx_buffer[5],rx_buffer[6],rx_buffer[7],rx_buffer[8],rx_buffer[9]);
-#if 0
+
+#if I2C_PRESENT
+    i2c_hw_init();
+    adxl_init();
+#endif
+
     while(1)
     {
+#if 0
         /* GPIO MODULE */
         /* Read button state continuously */
         /* This is not needed when interrupt is used to commented out */
@@ -158,8 +172,20 @@ int main()
             printf("SPI in polling mode! \n\r");
             HAL_SPI_TransmitReceive(&hspi1,tx_buffer,rx_buffer,1,100);
         }
-    }
 #endif
+
+#if I2C_PRESENT
+        adxl_read_values(DATA_START_ADDR);
+        x = ((DATA_RECORD[1]<<8)|DATA_RECORD[0]);
+        y = ((DATA_RECORD[3]<<8)|DATA_RECORD[2]);
+        z = ((DATA_RECORD[5]<<8)|DATA_RECORD[4]);
+
+        xg = x * FOUR_G_SCALE_FACT;
+        yg = y * FOUR_G_SCALE_FACT;
+        zg = z * FOUR_G_SCALE_FACT;
+#endif
+        HAL_Delay(10);
+    }
 }
 
 /* Callback as per HAL_TIM_IRQHandler */

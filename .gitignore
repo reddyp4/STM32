@@ -290,3 +290,17 @@ STM32G070/CubeIDE_Project/Debug/Src/spi.d
 STM32G070/CubeIDE_Project/Debug/Src/spi.o
 STM32G070/CubeIDE_Project/Debug/Src/spi.su
 STM32G070/CubeIDE_Project/Inc/spi.h
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_i2c_ex.cyclo
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_i2c_ex.d
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_i2c_ex.o
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_i2c_ex.su
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_i2c.cyclo
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_i2c.d
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_i2c.o
+STM32G070/CubeIDE_Project/Debug/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_i2c.su
+STM32G070/CubeIDE_Project/Debug/Src/i2c.cyclo
+STM32G070/CubeIDE_Project/Debug/Src/i2c.d
+STM32G070/CubeIDE_Project/Debug/Src/i2c.o
+STM32G070/CubeIDE_Project/Debug/Src/i2c.su
+.vscode/settings.json
+.DS_Store
