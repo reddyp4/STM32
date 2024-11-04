@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "spi.h"
 #include "i2c.h"
+#include "rtc.h"
 
 #define BUTTON_AS_INTERRUPT     2   /* 0=Manual input, 1=interrupt, 2=no LED, PA5 for SPI */
 #define ADC_CONTINUOUS_CONV     4   /* 0=Single Conversion, 1=Continuous conversion
@@ -19,13 +20,15 @@
                                        3=DMA 
                                        4=No ADC*/
 #define SPI_MODE    2   /* 0-polling, 1-interrupt, 2-dma*/
-#define I2C_PRESENT 1   /* if i2c device is present */
+#define I2C_PRESENT 0   /* if i2c device is present */
+#define RTC_PRESENT 1   /* if rtc is present */
 
 extern UART_HandleTypeDef huart2;
 extern ADC_HandleTypeDef hadc1;
 extern DMA_HandleTypeDef hdma_adc1;
 extern SPI_HandleTypeDef hspi2;
 extern I2C_HandleTypeDef hi2c1;
+extern RTC_HandleTypeDef hrtc;
 
 void pc13_btn_init(void);
 
@@ -48,6 +51,9 @@ extern uint8_t DATA_RECORD[6];
 extern uint8_t device_id;
 extern int16_t x,y,z;
 extern float xg, yg, zg;
+
+extern uint8_t time;
+extern uint8_t date;
 
 
 void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
@@ -127,6 +133,15 @@ int main()
     adxl_init();
 #endif
 
+#if RTC_PRESENT
+    rtc_init();
+    //read backup register
+    if(HAL_RTCEx_BKUPRead(&hrtc,RTC_BKP_DR0) != RTC_BACKUP)
+    {
+        rtc_calendar_config();
+    }
+#endif
+
     while(1)
     {
 #if 0
@@ -183,6 +198,10 @@ int main()
         xg = x * FOUR_G_SCALE_FACT;
         yg = y * FOUR_G_SCALE_FACT;
         zg = z * FOUR_G_SCALE_FACT;
+#endif
+#if RTC_PRESENT
+        //void rtc_calendar_show(uint8_t *showtime, uint8_t *showdate)
+        rtc_calendar_show(&time, &date);
 #endif
         HAL_Delay(10);
     }
