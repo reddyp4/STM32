@@ -15,6 +15,7 @@
 #include "rtc.h"
 
 #define BUTTON_AS_INTERRUPT     2   /* 0=Manual input, 1=interrupt, 2=no LED, PA5 for SPI */
+#define UART_MODE               1   /* 0=polling, 1-interrupt, 2-dma */
 #define ADC_CONTINUOUS_CONV     4   /* 0=Single Conversion, 1=Continuous conversion
                                        2=Interrupt Driven
                                        3=DMA 
@@ -55,6 +56,12 @@ extern float xg, yg, zg;
 extern uint8_t time;
 extern uint8_t date;
 
+/* UART rx/tx buffer */
+//uint8_t uart_tx_buffer, uart_rx_buffer;
+/* Buffer to transfer via rx-tx loopback for interrupt */
+uint8_t uart_tx_buffer[10]={11,21,31,41,51,61,71,81,91,101};
+uint8_t uart_rx_buffer[10];
+extern uint8_t uart_tx_counter, uart_rx_counter, uart_rx_tx_counter;
 
 void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
 {
@@ -68,8 +75,16 @@ void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
 int main()
 {
     HAL_Init(); //Initialize all HAL
-
-    uart_init();       //USART initialization
+    if(UART_MODE==0)
+        uart_init();       //USART initialization
+    else if(UART_MODE==1)
+    {
+        uart_interrupt_init();
+        HAL_UART_Transmit_IT(&huart2,uart_tx_buffer,10);
+        HAL_UART_Receive_IT(&huart2,uart_rx_buffer,10);
+    }
+    else
+        uart_dma_init();       //USART via dma initialization
     printf("Initiated UART!\n");
 
 #if 0
@@ -144,7 +159,6 @@ int main()
 
     while(1)
     {
-#if 0
         /* GPIO MODULE */
         /* Read button state continuously */
         /* This is not needed when interrupt is used to commented out */
@@ -154,13 +168,16 @@ int main()
             HAL_GPIO_WritePin(LED_PORT,LED_PIN,buttonStatus);
         }
 
-        /* UART transmit */
-        /* Option1: HAL directly */
-        //HAL_UART_Transmit(&huart2, (uint8_t *) message, 20, 100);
-        /* Option2: use printf */
-        //printf("Using printf\n");
-        //HAL_Delay(20);
-
+        /* UART transmit in polling mode */
+        if(UART_MODE==0)
+        {
+            /* Option1: HAL directly */
+            HAL_UART_Transmit(&huart2, (uint8_t *) message, 20, 100);
+            /* Option2: use printf */
+            printf("Using printf in UART polled mode\n");
+            HAL_Delay(20);
+        }
+#if 0
         if(ADC_CONTINUOUS_CONV==0)
         {
             //Single Conversion
@@ -213,7 +230,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     /**/
     printf("A second elapsed! \n\r");
 }
-
 
 /* Setup Button as GPIO input */
 void pc13_btn_init()

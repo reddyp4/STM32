@@ -10,6 +10,7 @@
         "spi.h": "c",
         "i2c.h": "c",
         "stm32g0xx_hal_conf.h": "c",
-        "rtc.h": "c"
+        "rtc.h": "c",
+        "uart.h": "c"
     }
 }
