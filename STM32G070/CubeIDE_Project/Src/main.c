@@ -89,7 +89,7 @@ int main()
     {
         uart_dma_init();       //USART via dma initialization
         HAL_UART_Transmit_DMA(&huart2, uart_tx_buffer, 10);
-        HAL_UART_Receive_DMA(&huart2, uart_tx_buffer, 10);
+        HAL_UART_Receive_DMA(&huart2, uart_rx_buffer, 10);
     }
     printf("Initiated UART!\n");
 
