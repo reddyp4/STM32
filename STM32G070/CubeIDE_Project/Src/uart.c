@@ -132,6 +132,8 @@ void uart_dma_init(void)
     /* Both reception and transmit using dma */
     /* Setup UART in interrupt mode */
     uart_hw_interrupt_init();
+    //Clock access to DMA 
+    __HAL_RCC_DMA1_CLK_ENABLE();
     //Do not need NVIC
     //Configure USART2 RX DMA
     hdma_usart1_rx.Instance = DMA1_Channel1;    //DMA_Channel_TypeDef-stm32g070xx.h
