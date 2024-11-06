@@ -108,7 +108,7 @@ void spi_dma_init(void)
     hspi2.hdmatx = &hdma_spi2_tx;
 }
 
-
+#if 0
 /* Point ROM handler to ST HAL Handler */
 void DMA_Channel2_3_IRQHandler(void)
 {
@@ -123,3 +123,4 @@ void DMA_Channel4_5_6_7_IRQHandler(void)
     /* Pass NVIC Handler to ST SPI IRQ Handler */
     HAL_DMA_IRQHandler(&hdma_spi2_tx);
 }
+#endif

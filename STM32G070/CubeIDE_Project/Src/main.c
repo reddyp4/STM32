@@ -15,7 +15,7 @@
 #include "rtc.h"
 
 #define BUTTON_AS_INTERRUPT     2   /* 0=Manual input, 1=interrupt, 2=no LED, PA5 for SPI */
-#define UART_MODE               1   /* 0=polling, 1-interrupt, 2-dma */
+#define UART_MODE               2   /* 0=polling, 1-interrupt, 2-dma */
 #define ADC_CONTINUOUS_CONV     4   /* 0=Single Conversion, 1=Continuous conversion
                                        2=Interrupt Driven
                                        3=DMA 
@@ -76,7 +76,9 @@ int main()
 {
     HAL_Init(); //Initialize all HAL
     if(UART_MODE==0)
+    {
         uart_init();       //USART initialization
+    }
     else if(UART_MODE==1)
     {
         uart_interrupt_init();
@@ -84,7 +86,11 @@ int main()
         HAL_UART_Receive_IT(&huart2,uart_rx_buffer,10);
     }
     else
+    {
         uart_dma_init();       //USART via dma initialization
+        HAL_UART_Transmit_DMA(&huart2, uart_tx_buffer, 10);
+        HAL_UART_Receive_DMA(&huart2, uart_tx_buffer, 10);
+    }
     printf("Initiated UART!\n");
 
 #if 0

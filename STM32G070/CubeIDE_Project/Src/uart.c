@@ -2,6 +2,8 @@
 //#include <stdio.h>
 
 UART_HandleTypeDef huart2;
+DMA_HandleTypeDef hdma_usart1_rx,hdma_usart1_tx;
+
 uint32_t uart_tx_counter=0, uart_rx_counter=0, uart_rx_tx_counter=0;
 
 /* Using printf to retarget the data */
@@ -120,7 +122,65 @@ void HAL_UARTEx_RxFifoFullCallback(UART_HandleTypeDef *huart)
     /* Do something when Rx FIFO is full */
 }
 
+/**********************************************************/
+/**********************************************************/
+/**********************************************************/
+
 void uart_dma_init(void)
 {
     /* User action on dma completion */
+    /* Both reception and transmit using dma */
+    /* Setup UART in interrupt mode */
+    uart_hw_interrupt_init();
+    //Do not need NVIC
+    //Configure USART2 RX DMA
+    hdma_usart1_rx.Instance = DMA1_Channel1;    //DMA_Channel_TypeDef-stm32g070xx.h
+    //hdma_usart1_rx.ChannelIndex = DMA_REQUEST_USART1_RX;    //Handled by HAL_DMA_Init()
+    hdma_usart1_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+    hdma_usart1_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_usart1_rx.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_usart1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+    hdma_usart1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+    hdma_usart1_rx.Init.Mode = DMA_NORMAL;
+    hdma_usart1_rx.Init.Priority = DMA_PRIORITY_LOW;
+    hdma_usart1_rx.Init.Request = DMA_REQUEST_USART1_RX;
+    HAL_DMA_Init(&hdma_usart1_rx);
+    //Link USART2 to DMA
+    huart2.hdmarx = &hdma_usart1_rx;
+
+    //Setup the TX DMA channel
+    //Configure UART2 TX DMA
+    hdma_usart1_tx.Instance = DMA1_Channel2;
+    hdma_usart1_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
+    hdma_usart1_tx.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_usart1_tx.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_usart1_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+    hdma_usart1_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+    hdma_usart1_tx.Init.Mode = DMA_NORMAL;
+    hdma_usart1_tx.Init.Priority = DMA_PRIORITY_LOW;
+    hdma_usart1_tx.Init.Request = DMA_REQUEST_USART1_TX;
+    HAL_DMA_Init(&hdma_usart1_tx);
+    //Link USART1 to DMA
+    huart2.hdmatx = &hdma_usart1_tx;
+
+    //Setup NVIC for DMA transfer
+    HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+    //Setup NVIC for DMA transfer
+    HAL_NVIC_SetPriority(DMA1_Channel2_3_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(DMA1_Channel2_3_IRQn);
+}
+
+/* Link NVIC IRQHandler to ST IRQHandler */
+void DMA_Channel1_IRQHandler(void)
+{
+    /* Link to ST */
+    HAL_DMA_IRQHandler(&hdma_usart1_rx);
+}
+
+/* Link NVIC IRQHandler to ST IRQHandler */
+void DMA_Channel2_3_IRQHandler(void)
+{
+    /* Link to ST */
+    HAL_DMA_IRQHandler(&hdma_usart1_tx);
 }
