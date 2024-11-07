@@ -173,12 +173,14 @@ void uart_dma_init(void)
     HAL_NVIC_EnableIRQ(DMA1_Channel2_3_IRQn);
 }
 
+#if (UART_MODE==2)
 /* Link NVIC IRQHandler to ST IRQHandler */
 void DMA_Channel1_IRQHandler(void)
 {
     /* Link to ST */
     HAL_DMA_IRQHandler(&hdma_usart1_rx);
 }
+#endif
 
 /* Link NVIC IRQHandler to ST IRQHandler */
 void DMA_Channel2_3_IRQHandler(void)

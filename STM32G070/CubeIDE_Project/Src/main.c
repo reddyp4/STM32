@@ -15,7 +15,7 @@
 #include "rtc.h"
 
 #define BUTTON_AS_INTERRUPT     2   /* 0=Manual input, 1=interrupt, 2=no LED, PA5 for SPI */
-#define UART_MODE               2   /* 0=polling, 1-interrupt, 2-dma */
+#define UART_MODE               1   /* 0=polling, 1-interrupt, 2-dma */
 #define ADC_CONTINUOUS_CONV     4   /* 0=Single Conversion, 1=Continuous conversion
                                        2=Interrupt Driven
                                        3=DMA 
@@ -23,6 +23,7 @@
 #define SPI_MODE    2   /* 0-polling, 1-interrupt, 2-dma*/
 #define I2C_PRESENT 0   /* if i2c device is present */
 #define RTC_PRESENT 1   /* if rtc is present */
+#define DMA_TO_DMA  1   /* 0-none, 1-memory-memory dma transfer, */
 
 extern UART_HandleTypeDef huart2;
 extern ADC_HandleTypeDef hadc1;
@@ -62,6 +63,7 @@ extern uint8_t date;
 uint8_t uart_tx_buffer[10]={11,21,31,41,51,61,71,81,91,101};
 uint8_t uart_rx_buffer[10];
 extern uint8_t uart_tx_counter, uart_rx_counter, uart_rx_tx_counter;
+
 
 void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
 {

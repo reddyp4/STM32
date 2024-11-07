@@ -321,3 +321,7 @@ STM32G070/CubeIDE_Project/Debug/Src/rtc.d
 STM32G070/CubeIDE_Project/Debug/Src/rtc.o
 STM32G070/CubeIDE_Project/Debug/Src/rtc.su
 STM32G070/CubeIDE_Project/Drivers/.DS_Store
+STM32G070/CubeIDE_Project/Debug/Src/dma.cyclo
+STM32G070/CubeIDE_Project/Debug/Src/dma.d
+STM32G070/CubeIDE_Project/Debug/Src/dma.o
+STM32G070/CubeIDE_Project/Debug/Src/dma.su
